@@ -1,11 +1,18 @@
 import { MovieItem } from "./Components/MovieItem/MovieItem";
-import { auth } from "./firebase";
+import { readData } from "./firestore";
 
 const API_KEY = "9158afab45f5cfe0e694118fd97ab5da";
 const URL_BODY = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=ru&sort_by=vote_count.desc&page=1`;
 
+const genres = (genre, id) => {
+  if (genre === true) {
+    return `%2C${id}`;
+  } else return "";
+};
+
 export const getList = async (
   setFunc,
+  user,
   lowerDate,
   upperDate,
   criminal,
@@ -22,13 +29,11 @@ export const getList = async (
   history,
   music
 ) => {
-  const genres = (genre, id) => {
-    if (genre === true) {
-      return `%2C${id}`;
-    } else return "";
-  };
   const lDate = `&primary_release_date.gte=${lowerDate}`;
   const gDate = `&primary_release_date.lte=${upperDate}`;
+
+  const watchedList = await readData(user);
+
   const response = await fetch(
     URL_BODY +
       lDate +
@@ -48,27 +53,32 @@ export const getList = async (
       genres(history, 36) +
       genres(music, 10402)
   );
+
   const result = await response.json();
+
   const results = result.results;
-  console.log(results);
+
   if (result.total_results === 0) {
     setFunc(<div>No results found</div>);
   } else {
     setFunc(
-      results.map((e, i) => {
-        if (e.id !== 272050000) {
+      results
+        .filter((e) => {
+          return !watchedList.includes(e.id);
+        })
+        .map((e, i) => {
           return (
             <MovieItem
               title={e.title}
-              key={i}
+              key={e.id}
               img={e.poster_path}
               overview={e.overview}
               year={e.release_date.substr(0, 4)}
+              movieId={e.id}
             />
           );
-        } else return false;
-      })
+        })
     );
   }
-  console.log(auth.currentUser);
+  console.log(watchedList, 1, "привет");
 };

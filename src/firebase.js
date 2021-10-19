@@ -1,5 +1,5 @@
-import firebase from "firebase";
-import "firebase/auth";
+import { initializeApp } from "firebase/app";
+
 const firebaseConfig = {
   apiKey: "AIzaSyApKq3lrKYsMR3oqGl2htzRaqpQDE12fd8",
   authDomain: "movie-finder-45712.firebaseapp.com",
@@ -10,10 +10,4 @@ const firebaseConfig = {
   messagingSenderId: "15156865272",
   appId: "1:15156865272:web:2c929b3cc64428e091330d",
 };
-const app = firebase.initializeApp(firebaseConfig);
-// references
-export const auth = firebase.auth();
-export const db = firebase.firestore();
-
-//update firestore settings
-db.settings({ timestampsInSnapshot: true });
+export const app = initializeApp(firebaseConfig);

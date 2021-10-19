@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { auth } from "../../auth";
 import { getList } from "../../Requests";
 
 export const MovieParams = ({ setList }) => {
   const [lowerDate, setLowerDate] = useState("");
   const [upperDate, setUpperDate] = useState("");
+  const [user, setUser] = useState(null);
+  auth.onAuthStateChanged(setUser);
 
   const handleAdd = () => {
     const genre = (genre) => {
@@ -11,6 +14,7 @@ export const MovieParams = ({ setList }) => {
     };
     getList(
       setList,
+      user.uid,
       lowerDate,
       upperDate,
       genre("criminal"),
