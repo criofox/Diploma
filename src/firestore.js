@@ -5,6 +5,8 @@ import {
   doc,
   getDoc,
   arrayUnion,
+  arrayRemove,
+  updateDoc,
 } from "firebase/firestore";
 import { app } from "./firebase";
 
@@ -27,4 +29,10 @@ export const readData = async (uid) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const deleteData = async (data, uid) => {
+  await updateDoc(doc(db, "users", uid), {
+    watchedFilms: arrayRemove(data),
+  });
 };

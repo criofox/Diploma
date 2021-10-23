@@ -1,4 +1,6 @@
+import { auth } from "./auth";
 import { MovieItem } from "./Components/MovieItem/MovieItem";
+import { WatchedMovieItem } from "./Components/WatchedMovieItem/WatchedMovieItem";
 import { readData } from "./firestore";
 
 const API_KEY = "9158afab45f5cfe0e694118fd97ab5da";
@@ -66,7 +68,7 @@ export const getList = async (
         .filter((e) => {
           return !watchedList.includes(e.id);
         })
-        .map((e, i) => {
+        .map((e) => {
           return (
             <MovieItem
               title={e.title}
@@ -80,5 +82,36 @@ export const getList = async (
         })
     );
   }
-  console.log(watchedList, 1, "привет");
+};
+
+export const logOutFunc = () => {
+  auth.signOut();
+};
+
+export const getWatchedList = async (user, setFunc) => {
+  const watchedList = await readData(user);
+  const watchedListSort = watchedList.reverse();
+  const listOfMovies = [];
+
+  for (const e of watchedListSort) {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${e}?api_key=9158afab45f5cfe0e694118fd97ab5da&language=ru`
+    );
+    const result = await response.json();
+    listOfMovies.push(result);
+  }
+  setFunc(
+    listOfMovies.map((e) => {
+      return (
+        <WatchedMovieItem
+          title={e.title}
+          key={e.id}
+          img={e.poster_path}
+          overview={e.overview}
+          year={e.release_date.substr(0, 4)}
+          movieId={e.id}
+        />
+      );
+    })
+  );
 };

@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LogInFunc, signUpFunc } from "../../auth";
-import { auth, db } from "../../firebase";
 
 export const LoginForm = () => {
   const [email, setEmail] = useState();

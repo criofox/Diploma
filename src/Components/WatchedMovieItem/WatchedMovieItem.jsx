@@ -1,15 +1,15 @@
-import { useImperativeHandle, useState } from "react";
+import { useState } from "react";
 import { auth } from "../../auth";
-import { sendData } from "../../firestore";
-import styles from "./MovieItem.module.css";
+import { deleteData } from "../../firestore";
+import styles from "../MovieItem/MovieItem.module.css";
 
-export const MovieItem = ({ title, img, overview, year, movieId }) => {
+export const WatchedMovieItem = ({ title, img, overview, year, movieId }) => {
   let [user, setUser] = useState(null);
   auth.onAuthStateChanged(setUser);
 
   const handleItemClick = () => {
     document.getElementById(`${movieId}`).style.display = "none";
-    sendData(movieId, user.uid);
+    deleteData(movieId, user.uid);
   };
 
   return (
@@ -28,7 +28,7 @@ export const MovieItem = ({ title, img, overview, year, movieId }) => {
             handleItemClick();
           }}
         >
-          Смотрел
+          Удалить
         </button>
       </div>
     </li>
