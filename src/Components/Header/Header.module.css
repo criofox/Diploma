@@ -1,0 +1,40 @@
+.header {
+    background-color:#2E65F3;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 24px;
+}
+
+.menu {
+    display: flex;
+}
+
+.nav {
+    margin-left: 24px;
+    font-size: 16px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    line-height: 20px;
+}
+
+.active {
+    font-weight: 700;
+}
+
+.button {
+    background: #2E65F3;
+    border: none;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-right: 34px;
+}
+
+.button:hover {
+    font-weight: 700;
+}

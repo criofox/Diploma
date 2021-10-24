@@ -9,12 +9,9 @@ export const WatchedMovieList = () => {
   auth.onAuthStateChanged(setUser);
 
   useEffect(() => {
-    if (user !== null) getWatchedList(user.uid, setList);
+    if (user !== null) {
+      getWatchedList(user.uid, setList);
+    }
   }, [user]);
-  return (
-    <>
-      <div>Просмотренные фильмы:</div>
-      <ul>{list}</ul>
-    </>
-  );
+  return <ul>{list}</ul>;
 };

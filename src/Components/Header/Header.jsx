@@ -1,28 +1,51 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import { logOutFunc } from "../../auth";
 import { MovieFinder } from "../MovieFinder/MovieFinder";
 import { WatchedMovieList } from "../WatchedMovieList/WatchedMovieList";
+import styles from "./Header.module.css";
 
 export const Header = () => {
   return (
     <Router>
       <div>
-        <div>
-          <Link to="/">Главная</Link>
+        <div className={styles.header}>
+          <div className={styles.menu}>
+            <div>
+              <NavLink
+                exact
+                activeClassName={styles.active}
+                className={styles.nav}
+                to="/"
+              >
+                Главная
+              </NavLink>
+            </div>
+            <div>
+              <NavLink
+                exact
+                activeClassName={styles.active}
+                className={styles.nav}
+                to="/watched"
+              >
+                Смотрел
+              </NavLink>
+            </div>
+          </div>
+          <button
+            className={styles.button}
+            onClick={() => {
+              logOutFunc();
+            }}
+          >
+            Log Out
+          </button>
         </div>
-        <div>
-          <Link to="/watched">Смотрел</Link>
-        </div>
-        <button
-          onClick={() => {
-            logOutFunc();
-          }}
-        >
-          Log Out
-        </button>
-
-        <hr />
         <Switch>
           <Route exact path="/">
             <MovieFinder />

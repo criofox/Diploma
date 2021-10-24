@@ -22,8 +22,9 @@ export const WatchedMovieItem = ({ title, img, overview, year, movieId }) => {
       <div className={styles.text_container}>
         <div className={styles.title}>{title}</div>
         <div className={styles.description}>{overview}</div>
-        <div>Год выпуска: {year}</div>
+        <div className={styles.year}>Год выпуска: {year}</div>
         <button
+          className={styles.button}
           onClick={() => {
             handleItemClick();
           }}

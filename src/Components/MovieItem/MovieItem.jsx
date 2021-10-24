@@ -16,14 +16,15 @@ export const MovieItem = ({ title, img, overview, year, movieId }) => {
     <li className={styles.item} id={movieId}>
       <img
         className={styles.image}
-        src={"https://image.tmdb.org/t/p/w200" + img}
+        src={"https://image.tmdb.org/t/p/w300" + img}
         alt="/"
       />
       <div className={styles.text_container}>
         <div className={styles.title}>{title}</div>
         <div className={styles.description}>{overview}</div>
-        <div>Год выпуска: {year}</div>
+        <div className={styles.year}>Год выпуска: {year}</div>
         <button
+          className={styles.button}
           onClick={() => {
             handleItemClick();
           }}

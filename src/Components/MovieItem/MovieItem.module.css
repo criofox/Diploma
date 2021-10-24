@@ -4,16 +4,58 @@
 
 .item {
     display: flex;
+    padding: 25px;
+    border: 2px solid #ECECEC;
+    box-sizing: border-box;
+    border-radius: 16px;
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-right: 34px;
 }
 
 .image {
-    max-width: 120px;
+    max-width: 200px;
 }
 
 .title {
+    font-family: Inter;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #232325;
 }
 
 .description {
-    margin-top: 15px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #232325;
+
+}
+
+.button {
+    width: 111px;
+    background-color: #2E65F3;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
+
+.year {
+    margin-bottom: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    color: #6F727A;
 }

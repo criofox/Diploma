@@ -1,0 +1,95 @@
+.container {
+    max-width: 1440px;
+    margin: auto;
+}
+
+.paramsup {
+    margin-top: 48px;
+    margin-left: 64px;
+    max-width: 1318px;
+    display: flex;
+}
+
+.paramslow {
+    margin-top: 24px;
+    max-width: 1318px;
+    display: flex;
+    justify-content: center;
+}
+
+.genre {
+    margin-left: 24px;
+}
+
+.label {
+    margin-left: 10px;
+    font-family: Inter;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    color: #232325;
+}
+
+.dates {
+    display: flex;
+    margin-left: 460px;
+    max-width: 300px;
+    margin-top: 48px;
+}
+
+.date {
+    max-width: 125px;
+    margin-left: 16px;
+    font-family: Inter;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    color: #6F727A;
+    border: 1px solid #2E65F3;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.dateblock {
+    display: flex;
+    margin-left: 30px;
+}
+
+.datelabel {
+    margin-top: 8px;
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 24px;
+    color: #6F727A;
+}
+
+.button {
+    margin: 40px auto 16px;
+    text-align: center;
+
+}
+
+.buttoninner:hover {
+    background-color: #0047FF;
+}
+
+.buttoninner:active {
+    background-color: #2147A8;
+}
+
+.buttoninner {
+    width: 120px;
+    background-color: #2E65F3;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
