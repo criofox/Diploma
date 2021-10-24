@@ -1,4 +1,3 @@
-import { auth } from "./auth";
 import { MovieItem } from "./Components/MovieItem/MovieItem";
 import { WatchedMovieItem } from "./Components/WatchedMovieItem/WatchedMovieItem";
 import { readData } from "./firestore";
@@ -84,10 +83,6 @@ export const getList = async (
   }
 };
 
-export const logOutFunc = () => {
-  auth.signOut();
-};
-
 export const getWatchedList = async (user, setFunc) => {
   const watchedList = await readData(user);
   const watchedListSort = watchedList.reverse();
@@ -100,7 +95,7 @@ export const getWatchedList = async (user, setFunc) => {
     const result = await response.json();
     listOfMovies.push(result);
   }
-  setFunc(
+  return setFunc(
     listOfMovies.map((e) => {
       return (
         <WatchedMovieItem

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { LogInFunc } from "../../auth";
+import { signUpFunc } from "../../auth";
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -23,10 +23,10 @@ export const LoginForm = () => {
       />
       <button
         onClick={() => {
-          LogInFunc(email, password);
+          signUpFunc(email, password);
         }}
       >
-        Log In
+        Register
       </button>
     </div>
   );

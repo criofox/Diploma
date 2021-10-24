@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { logOutFunc } from "../../Requests";
+import { logOutFunc } from "../../auth";
 import { MovieFinder } from "../MovieFinder/MovieFinder";
 import { WatchedMovieList } from "../WatchedMovieList/WatchedMovieList";
 

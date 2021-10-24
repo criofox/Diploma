@@ -1,5 +1,4 @@
 import {
-  collection,
   getFirestore,
   setDoc,
   doc,
@@ -20,6 +19,12 @@ export const sendData = async (data, uid) => {
     },
     { merge: true }
   );
+};
+
+export const createData = async (uid) => {
+  await setDoc(doc(db, "users", uid), {
+    watchedFilms: [],
+  });
 };
 
 export const readData = async (uid) => {

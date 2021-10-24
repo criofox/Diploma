@@ -1,4 +1,4 @@
-import { useImperativeHandle, useState } from "react";
+import { useState } from "react";
 import { auth } from "../../auth";
 import { sendData } from "../../firestore";
 import styles from "./MovieItem.module.css";
